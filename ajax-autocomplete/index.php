@@ -44,13 +44,15 @@
                     method: "POST",
                     data: {city: city}, // Sending data means dending var city value in load-city.php.
                     success:function(data){
-                    console.log(data);
                     $("#cityList").fadeIn("fast").html(data);
+
                     }
                 })                                                  
             }
             else{
                 $("cityList").fadeOut("fast");
+                    $("#table-data").html("");
+
             }
         });
         $(document).on('click','#cityList li',function(){
@@ -62,6 +64,8 @@
             var city = $('#city-box').val();
             if(city == ""){
               alert("Please enter fisrt name");
+              $("#table-data").html("");
+
             }
             else{
              $.ajax({            // Ajax code Starts
@@ -69,7 +73,7 @@
                     method: "POST",
                     data: {city: city}, // Sending data means dending var city value in load-city.php.
                     success:function(data){
-                    $("#cityList").fadeIn("fast").html(data);
+                    $("#table-data").html(data);
                     }
                 })         
             }
